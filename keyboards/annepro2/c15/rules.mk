@@ -5,7 +5,7 @@ SRC = \
 	annepro2_ble.c \
     qmk_ap2_led.c
 
-LAYOUTS +=
+LAYOUTS = 60_ansi
 
 # MCU
 MCU = cortex-m0plus
