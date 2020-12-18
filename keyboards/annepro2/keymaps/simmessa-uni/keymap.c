@@ -8,17 +8,47 @@ enum anne_pro_layers {
 };
 
 /*
+  * Some accented chars I'd like to send to my Italian language OS while on EN keyboard:
+  * 
+  * ò = U+00F2 = 0x0F2, à = U+00E0 = 0x0E0, ù = U+00F9 = 0x0F9
+  * è = U+00E8 = 0x0E8, é = U+00E9 = 0x0E9, ì = U+00EC = 0x0EC
+  *
+  * I'll be using tap dance for those :)
+*/
+
+//TAP dance declarations
+enum {
+    TD_OGRAVE, //0x0F2
+    TD_AGRAVE, //0x0E0
+    TD_UGRAVE, //0x0F9
+    TD_EGRAVE, //0x0E8
+    TD_EACUTE, //0x0E9
+    TD_IGRAVE, //0x0EC
+}
+
+//TAP dance definitions
+qk_tap_dance_action_t tap_dance_actions[] = {
+    // Tap once for normal char, twice for accented
+    [TD_OGRAVE] = ACTION_TAP_DANCE_DOUBLE(KC_L, UC(0x0F2)),
+    [TD_AGRAVE] = ACTION_TAP_DANCE_DOUBLE(KC_SCLN, UC(0x0E0)),
+    [TD_UGRAVE] = ACTION_TAP_DANCE_DOUBLE(KC_QUOT, UC(0x0F9)),
+    [TD_EGRAVE] = ACTION_TAP_DANCE_DOUBLE(KC_LBRC, UC(0x0E8)),
+    [TD_EACUTE] = ACTION_TAP_DANCE_DOUBLE(KC_RBRC, UC(0x0E9)),
+    [TD_IGRAVE] = ACTION_TAP_DANCE_DOUBLE(KC_EQL, UC(0x0EC)),
+};
+
+/*
 * Layer _BASE_LAYER
 * ,-----------------------------------------------------------------------------------------.
-* | esc~ |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  0  |  -  |  =  |   Bksp   |
+* | esc~ |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  0  |  -  | =/ì |   Bksp   |
 * |-----------------------------------------------------------------------------------------+
-* |   Tab  |  q  |  w  |  e  |  r  |  t  |  y  |  u  |  i  |  o  |  p  |  [  |  ]  |   \    |
+* |   Tab  |  q  |  w  |  e  |  r  |  t  |  y  |  u  |  i  |  o  |  p  | [/è | ]/é |   \    |
 * |-----------------------------------------------------------------------------------------+
-* |   FN1   |  a  |  s  |  d  |  f  |  g  |  h  |  j  |  k  |  l  |  ;  |  '  |    Enter    |
+* |   FN1   |  a  |  s  |  d  |  f  |  g  |  h  |  j  |  k  | l/ò | ;/à | '/ù |    Enter    |
 * |-----------------------------------------------------------------------------------------+
 * | Shift      |  z  |  x  |  c  |  v  |  b  |  n  |  m  |  ,  |  .  |  /  |    Shift       |
 * |-----------------------------------------------------------------------------------------+
-* | Ctrl  |  L1   |  Alt  |               space             |  Alt  |  FN1  |  Ctrl | Ctrl  |
+* | Ctrl  |  L1   |  Alt  |               space             |  FN1  |  Alt  |  Ctrl |  Del  |
 * \-----------------------------------------------------------------------------------------/
 * Layer TAP in _BASE_LAYER
 * ,-----------------------------------------------------------------------------------------.
@@ -36,17 +66,13 @@ enum anne_pro_layers {
 
  const uint16_t keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  [_BASE_LAYER] = KEYMAP( /* Tweaked base */
-   KC_GESC, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_MINS, KC_EQL, KC_BSPC,
-   KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_LBRC, KC_RBRC, KC_BSLS,
-   LT(_FN1_LAYER,KC_CAPS), KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT, KC_ENT,
+   KC_GESC, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_MINS, TD(TD_IGRAVE), KC_BSPC,
+   KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, TD(TD_EGRAVE), TD(TD_EACUTE), KC_BSLS,
+   LT(_FN1_LAYER,KC_CAPS), KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, TD(TD_OGRAVE), TD(TD_AGRAVE), TD(TD_UGRAVE), KC_ENT,
    KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSFT,
    KC_LCTL, KC_LGUI, KC_LALT, KC_SPC, MO(_FN1_LAYER), KC_RALT, KC_RCTL, KC_DEL
 ),
   /*
-  * Some accented chars I'd like to send to my Italian language OS while on EN keyboard:
-  * 
-  * ò = U+00F2 = 0x0F2, à = U+00E0 = 0x0E0, ù = U+00F9 = 0x0F9
-  * è = U+00E8 = 0x0E8, é = U+00E9 = 0x0E9, ì = U+00EC = 0x0EC
   * 
   * Layer _FN1_LAYER
   * ,-----------------------------------------------------------------------------------------.
