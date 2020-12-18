@@ -43,6 +43,11 @@ enum anne_pro_layers {
    KC_LCTL, KC_LGUI, KC_LALT, KC_SPC, MO(_FN1_LAYER), KC_RALT, KC_RCTL, KC_DEL
 ),
   /*
+  * Some accented chars I'd like to send to my Italian language OS while on EN keyboard:
+  * 
+  * ò = U+00F2 = 0x0F2, à = U+00E0 = 0x0E0, ù = U+00F9 = 0x0F9
+  * è = U+00E8 = 0x0E8, é = U+00E9 = 0x0E9, ì = U+00EC = 0x0EC
+  * 
   * Layer _FN1_LAYER
   * ,-----------------------------------------------------------------------------------------.
   * |  ~` |  F1 |  F2 |  F3 |  F4 |  F5 |  F6 |  F7 |  F8 |  F9 | F10 | F11 | F12 |  DELETE   |
