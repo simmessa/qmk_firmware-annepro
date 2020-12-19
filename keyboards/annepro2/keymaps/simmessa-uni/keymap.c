@@ -1,6 +1,7 @@
 #include <stdint.h>
 #include "annepro2.h"
 #include "qmk_ap2_led.h"
+#include "quantum.h"
 
 enum anne_pro_layers {
   _BASE_LAYER,
