@@ -25,7 +25,18 @@ enum {
     TD_EGRAVE, //0x0E8
     TD_EACUTE, //0x0E9
     TD_IGRAVE, //0x0EC
-}
+};
+
+//TAP dance definitions
+qk_tap_dance_action_t tap_dance_actions[] = {
+    // Tap once for normal char, twice for accented
+    [TD_OGRAVE] = ACTION_TAP_DANCE_DOUBLE(KC_L, UC(0x0F2)),
+    [TD_AGRAVE] = ACTION_TAP_DANCE_DOUBLE(KC_SCLN, UC(0x0E0)),
+    [TD_UGRAVE] = ACTION_TAP_DANCE_DOUBLE(KC_QUOT, UC(0x0F9)),
+    [TD_EGRAVE] = ACTION_TAP_DANCE_DOUBLE(KC_LBRC, UC(0x0E8)),
+    [TD_EACUTE] = ACTION_TAP_DANCE_DOUBLE(KC_RBRC, UC(0x0E9)),
+    [TD_IGRAVE] = ACTION_TAP_DANCE_DOUBLE(KC_EQL, UC(0x0EC)),
+};
 
 /*
 * Layer _BASE_LAYER
@@ -53,17 +64,6 @@ enum {
 * |       |       |       |                                 |       |       |       |       |
 * \-----------------------------------------------------------------------------------------/
 */
-
-//TAP dance definitions
-qk_tap_dance_action_t tap_dance_actions[] = {
-    // Tap once for normal char, twice for accented
-    [TD_OGRAVE] = ACTION_TAP_DANCE_DOUBLE(KC_L, UC(0x0F2)),
-    [TD_AGRAVE] = ACTION_TAP_DANCE_DOUBLE(KC_SCLN, UC(0x0E0)),
-    [TD_UGRAVE] = ACTION_TAP_DANCE_DOUBLE(KC_QUOT, UC(0x0F9)),
-    [TD_EGRAVE] = ACTION_TAP_DANCE_DOUBLE(KC_LBRC, UC(0x0E8)),
-    [TD_EACUTE] = ACTION_TAP_DANCE_DOUBLE(KC_RBRC, UC(0x0E9)),
-    [TD_IGRAVE] = ACTION_TAP_DANCE_DOUBLE(KC_EQL, UC(0x0EC)),
-};
 
  const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
