@@ -55,8 +55,9 @@ enum {
 */
 
 //TAP dance definitions
+// Tap once for normal char, twice for accented
+
 qk_tap_dance_action_t tap_dance_actions[] = {
-    // Tap once for normal char, twice for accented
     [TD_OGRAVE] = ACTION_TAP_DANCE_DOUBLE(KC_L, UC(0x0F2)),
     [TD_AGRAVE] = ACTION_TAP_DANCE_DOUBLE(KC_SCLN, UC(0x0E0)),
     [TD_UGRAVE] = ACTION_TAP_DANCE_DOUBLE(KC_QUOT, UC(0x0F9)),
