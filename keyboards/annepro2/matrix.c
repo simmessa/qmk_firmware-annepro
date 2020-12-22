@@ -79,13 +79,6 @@ uint8_t matrix_scan(void) {
     return 1;
 }
 
-
-void matrix_scan_kb(void) {
-  // Looping keyboard code goes here
-  // This runs every cycle (a lot)
-  matrix_scan_user();
-};
-
 bool matrix_is_on(uint8_t row, uint8_t col) {
     return (matrix[row] & (1 << col));
 }
