@@ -38,3 +38,7 @@ RAW_ENABLE = yes
 MIDI_ENABLE = no
 VIRTSER_ENABLE = no
 COMBO_ENABLE = no
+
+# Advanced stuff I need
+UNICODE_ENABLE = yes
+TAP_DANCE_ENABLE = yes
