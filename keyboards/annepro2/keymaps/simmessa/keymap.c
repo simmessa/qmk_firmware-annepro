@@ -8,17 +8,6 @@ enum anne_pro_layers {
   _FN1_LAYER,
 };
 
-//TAP dance declarations
-enum {
-    TD_NULL, //just to avoid errors...
-}
-
-//TAP dance definitions
-qk_tap_dance_action_t tap_dance_actions[] = {
-    // Tap once for normal char, twice for accented
-    [TD_NULL] = ACTION_TAP_DANCE_DOUBLE(KC_L, KC_EQL),
-};
-
 /*
 * Layer _BASE_LAYER
 * ,-----------------------------------------------------------------------------------------.
